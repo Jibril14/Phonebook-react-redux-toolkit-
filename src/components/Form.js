@@ -2,13 +2,14 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-function Form() {
+function Form(props) {
     const loginInputId = nanoid();
 
     return (
         <HtmlForm>
             <Label htmlFor={loginInputId}>Enter Name</Label>
             <Input
+                onChange={props.Changed}
                 type="text"
                 name="name"
                 id={loginInputId}
@@ -16,7 +17,9 @@ function Form() {
                 title="Enter Valid Letters Only"
                 required
             />
-            <Button type="submit">Add contact</Button>
+            <Button onClick={props.Clicked} type="submit">
+                Add contact
+            </Button>
         </HtmlForm>
     );
 }

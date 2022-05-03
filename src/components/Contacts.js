@@ -1,29 +1,19 @@
 import styled from "styled-components";
 
-function Contacts() {
+function Contacts(props) {
     return (
         <ul>
-            <StyleUi>
-                <i
-                    className="fas fa-phone-alt"
-                    style={{ color: "red", margin: "4px" }}
-                ></i>
-                Tamara Adeyemi
-            </StyleUi>
-            <StyleUi>
-                <i
-                    className="fas fa-phone-alt"
-                    style={{ color: "red", margin: "4px" }}
-                ></i>
-                John Doe
-            </StyleUi>
-            <StyleUi>
-                <i
-                    className="fas fa-phone-alt"
-                    style={{ color: "red", margin: "4px" }}
-                ></i>
-                Abdullahi Hauwa
-            </StyleUi>
+            {props.contacts.map((val) => {
+                return (
+                    <StyleUi key={val.id}>
+                        <i
+                            className="fas fa-phone-alt"
+                            style={{ color: "red", margin: "4px" }}
+                        ></i>
+                        {val.name}
+                    </StyleUi>
+                );
+            })}
         </ul>
     );
 }
