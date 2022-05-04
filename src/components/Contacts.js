@@ -4,14 +4,14 @@ import propsType from "prop-types";
 function Contacts(props) {
     return (
         <ul>
-            {props.contacts.map((val) => {
+            {props.contacts.map(({ id, name, number }) => {
                 return (
-                    <StyleUi key={val.id}>
+                    <StyleUi key={id}>
                         <i
                             className="fas fa-phone-alt"
                             style={{ color: "red", margin: "4px" }}
                         ></i>
-                        {val.name}
+                        {name}: ({number})
                     </StyleUi>
                 );
             })}

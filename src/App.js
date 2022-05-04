@@ -8,18 +8,24 @@ import { nanoid } from "nanoid";
 class App extends Component {
     state = {
         contacts: [
-            { id: nanoid(5), name: "Tamara Adebayo" },
-            { id: nanoid(5), name: "Jane Doe" },
-            { id: nanoid(5), name: "Abdullahi Hauwa" }
+            { id: nanoid(5), name: "Tamara Adebayo", number: "070-881-1245" },
+            { id: nanoid(5), name: "Jane Doe", number: "080-772-1245" },
+            { id: nanoid(5), name: "Abdullahi Hauwa", number: "090-553-1245" }
         ],
-        name: ""
+        name: "",
+        number: ""
     };
 
     AddInputToState = (e) => {
-        const enteredNum = e.target.value;
+        let name = e.target.name;
+        let number = e.target.number;
+        number = e.target.value;
+        console.log("entNumm", number);
+
         this.setState({
             ...this.state,
-            name: enteredNum
+            [name]: e.target.value,
+            [number]: e.target.value
         });
     };
 
@@ -29,11 +35,19 @@ class App extends Component {
         this.setState((prevState) => ({
             contacts: [
                 ...prevState.contacts,
-                { id: nanoid(5), name: this.state.name }
+                {
+                    id: nanoid(5),
+                    name: this.state.name,
+                    number: this.state.number
+                }
             ]
         }));
 
-        e.target.previousSibling.value = "";
+        // this.setState((state) => ({ name: "", number: "" }));
+        //e.target.previousSibling.value = "";
+
+        e.target.closest("form").reset();
+        //console.log("form?", e.target.closest("form"));
     };
 
     render() {

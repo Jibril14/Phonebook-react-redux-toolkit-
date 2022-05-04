@@ -5,12 +5,12 @@ import propsType from "prop-types";
 
 function Form(props) {
     const loginInputId = nanoid();
+    const loginInputId2 = nanoid();
 
     return (
-        <HtmlForm>
+        <HtmlForm onChange={props.Changed}>
             <Label htmlFor={loginInputId}>Enter Name</Label>
             <Input
-                onChange={props.Changed}
                 type="text"
                 name="name"
                 id={loginInputId}
@@ -18,6 +18,17 @@ function Form(props) {
                 title="Enter Valid Letters Only"
                 required
             />
+
+            <Label htmlFor={loginInputId2}>Phone Number</Label>
+            <Input
+                type="tel"
+                name="number"
+                id={loginInputId2}
+                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                required
+            />
+
             <Button onClick={props.Clicked} type="submit">
                 Add contact
             </Button>
