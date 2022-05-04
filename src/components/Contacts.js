@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import propsType from "prop-types";
 
 function Contacts(props) {
     return (
@@ -19,6 +20,10 @@ function Contacts(props) {
 }
 
 export default Contacts;
+
+Contacts.propsType = {
+    contacts: propsType.array
+};
 
 const StyleUi = styled.li`
     list-style-type: none;

@@ -1,6 +1,7 @@
 // import React from 'react';
 import { nanoid } from "nanoid";
 import styled from "styled-components";
+import propsType from "prop-types";
 
 function Form(props) {
     const loginInputId = nanoid();
@@ -25,6 +26,11 @@ function Form(props) {
 }
 
 export default Form;
+
+Form.propsType = {
+    Changed: propsType.func,
+    Clicked: propsType.func
+};
 
 const HtmlForm = styled.form`
     border: 1px solid black;
