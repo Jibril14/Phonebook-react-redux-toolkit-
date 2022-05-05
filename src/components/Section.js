@@ -33,6 +33,6 @@ const StyleDiv = styled.div`
     padding: 10px 16px;
 
     @media (max-width: 760px) {
-        width: 100%;
+        width: 90%;
     }
 `;
