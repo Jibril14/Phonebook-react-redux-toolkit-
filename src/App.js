@@ -4,6 +4,7 @@ import Section from "./components/Section";
 import Form from "./components/Form";
 import Contacts from "./components/Contacts";
 import { nanoid } from "nanoid";
+import Filter from "./components/Filter";
 
 class App extends Component {
     state = {
@@ -13,9 +14,11 @@ class App extends Component {
             { id: nanoid(5), name: "Abdullahi Hauwa", number: "090-553-1245" }
         ],
         name: "",
-        number: ""
+        number: "",
+        filter: ""
     };
 
+    // onChange Handler
     AddInputToState = (e) => {
         let name = e.target.name;
         let number = e.target.number;
@@ -29,6 +32,7 @@ class App extends Component {
         });
     };
 
+    // onClick Handler
     AddStateInputToContact = (e) => {
         e.preventDefault();
 
@@ -43,12 +47,11 @@ class App extends Component {
             ]
         }));
 
-        // this.setState((state) => ({ name: "", number: "" }));
-        //e.target.previousSibling.value = "";
-
+        this.setState(() => ({ name: "", number: "" }));
         e.target.closest("form").reset();
-        //console.log("form?", e.target.closest("form"));
     };
+
+    inPutSearchHandler = () => {};
 
     render() {
         return (
@@ -58,6 +61,9 @@ class App extends Component {
                         Clicked={this.AddStateInputToContact}
                         Changed={this.AddInputToState}
                     />
+                </Section>
+                <Section title="Search Contacts">
+                    <Filter Changed={this.inPutSearchHandler} />
                 </Section>
                 <Section title="Contacts">
                     <Contacts contacts={this.state.contacts} />

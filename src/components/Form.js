@@ -45,7 +45,7 @@ Form.propsType = {
 
 const HtmlForm = styled.form`
     border: 1px solid black;
-    padding: 15px;
+    padding: 5px 15px;
     width: 40%;
 
     @media (max-width: 760px) {
