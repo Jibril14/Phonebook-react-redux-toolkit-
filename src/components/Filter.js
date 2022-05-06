@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import propsType from "prop-types";
 
 const Filter = ({ Changed }) => {
     const loginInputId = nanoid();
@@ -18,3 +19,7 @@ const Filter = ({ Changed }) => {
 };
 
 export default Filter;
+
+Filter.propsType = {
+    Changed: propsType.func
+};
