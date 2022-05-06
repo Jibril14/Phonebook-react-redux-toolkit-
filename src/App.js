@@ -22,8 +22,6 @@ class App extends Component {
     AddInputToState = (e) => {
         let name = e.target.name;
         let number = e.target.number;
-        number = e.target.value;
-        console.log("entNumm", number);
 
         this.setState({
             ...this.state,
@@ -51,7 +49,19 @@ class App extends Component {
         e.target.closest("form").reset();
     };
 
-    inPutSearchHandler = () => {};
+    searchInputHandler = (e) => {
+        const userInput = e.target.value;
+        this.setState({
+            filter: userInput
+        });
+    };
+
+    filteredSearchContacts = () => {
+        const filteredContacts = [...this.state.contacts].filter((contact) =>
+            contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+        );
+        return filteredContacts;
+    };
 
     render() {
         return (
@@ -63,10 +73,10 @@ class App extends Component {
                     />
                 </Section>
                 <Section title="Search Contacts">
-                    <Filter Changed={this.inPutSearchHandler} />
+                    <Filter Changed={this.searchInputHandler} />
                 </Section>
                 <Section title="Contacts">
-                    <Contacts contacts={this.state.contacts} />
+                    <Contacts contacts={this.filteredSearchContacts()} />
                 </Section>
             </>
         );
