@@ -31,23 +31,6 @@ class App extends Component {
     };
 
     // onClick Handler
-    AddStateInputToContact = (e) => {
-        e.preventDefault();
-
-        this.setState((prevState) => ({
-            contacts: [
-                ...prevState.contacts,
-                {
-                    id: nanoid(5),
-                    name: this.state.name,
-                    number: this.state.number
-                }
-            ]
-        }));
-
-        this.setState(() => ({ name: "", number: "" }));
-        e.target.closest("form").reset();
-    };
 
     searchInputHandler = (e) => {
         const userInput = e.target.value;
@@ -64,11 +47,32 @@ class App extends Component {
     };
 
     render() {
+        let AddStateInputToContact;
+        if (this.state.name || this.state.number !== "") {
+            AddStateInputToContact = (e) => {
+                e.preventDefault();
+
+                this.setState((prevState) => ({
+                    contacts: [
+                        ...prevState.contacts,
+                        {
+                            id: nanoid(5),
+                            name: this.state.name,
+                            number: this.state.number
+                        }
+                    ]
+                }));
+
+                this.setState(() => ({ name: "", number: "" }));
+                e.target.closest("form").reset();
+            };
+        } else {
+        }
         return (
             <>
                 <Section title="Phonebook">
                     <Form
-                        Clicked={this.AddStateInputToContact}
+                        Clicked={AddStateInputToContact}
                         Changed={this.AddInputToState}
                     />
                 </Section>
