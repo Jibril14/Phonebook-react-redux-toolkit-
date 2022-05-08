@@ -46,6 +46,14 @@ class App extends Component {
         return filteredContacts;
     };
 
+    deleteContactHandler = (key) => {
+        this.setState({
+            contacts: this.state.contacts.filter(
+                (contact) => contact.id !== key
+            )
+        });
+    };
+
     render() {
         let AddStateInputToContact;
         if (this.state.name || this.state.number !== "") {
@@ -80,7 +88,10 @@ class App extends Component {
                     <Filter Changed={this.searchInputHandler} />
                 </Section>
                 <Section title="Contacts">
-                    <Contacts contacts={this.filteredSearchContacts()} />
+                    <Contacts
+                        contacts={this.filteredSearchContacts()}
+                        Clicked={this.deleteContactHandler}
+                    />
                 </Section>
             </>
         );
