@@ -54,6 +54,11 @@ class App extends Component {
         });
     };
 
+    addToLocalStorage = () => {
+        localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+        console.log("working", this.state.contacts);
+    };
+
     render() {
         let AddStateInputToContact;
         if (this.state.name || this.state.number !== "") {
@@ -71,6 +76,7 @@ class App extends Component {
                     ]
                 }));
 
+                this.addToLocalStorage();
                 this.setState(() => ({ name: "", number: "" }));
                 e.target.closest("form").reset();
             };
