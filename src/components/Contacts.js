@@ -2,7 +2,15 @@ import styled from "styled-components";
 import propsType from "prop-types";
 import { propTypes } from "react-bootstrap/esm/Image";
 
+import { useSelector } from "react-redux";
+
 function Contacts(props) {
+    // test if redux state is connected
+    const phoneName = useSelector((state) => state.contact.value.name);
+    const phoneNumber = useSelector((state) => state.contact.value.number);
+    console.log("PhoneName", phoneName);
+    console.log("PhoneNumber", phoneNumber);
+
     return (
         <ul>
             {props.contacts.map(({ id, name, number }) => {
