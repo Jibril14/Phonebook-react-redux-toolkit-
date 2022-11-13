@@ -6,14 +6,13 @@ import { useSelector } from "react-redux";
 
 function Contacts(props) {
     // test if redux state is connected
-    const phoneName = useSelector((state) => state.contact.value.name);
-    const phoneNumber = useSelector((state) => state.contact.value.number);
-    console.log("PhoneName", phoneName);
-    console.log("PhoneNumber", phoneNumber);
+    const contacts = useSelector((state) => state.contact.value.contacts);
+
+    console.log("PhoneName", contacts);
 
     return (
         <ul>
-            {props.contacts.map(({ id, name, number }) => {
+            {contacts.map(({ id, name, number }) => {
                 return (
                     <Styleli key={id}>
                         <i
@@ -34,7 +33,6 @@ function Contacts(props) {
 export default Contacts;
 
 Contacts.propsType = {
-    contacts: propsType.array,
     Clicked: propTypes.func
 };
 

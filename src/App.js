@@ -3,16 +3,11 @@ import "./App.css";
 import Section from "./components/Section";
 import Form from "./components/Form";
 import Contacts from "./components/Contacts";
-import { nanoid } from "nanoid";
+//import { nanoid } from "nanoid";
 import Filter from "./components/Filter";
 
 class App extends Component {
     state = {
-        contacts: [
-            { id: nanoid(5), name: "Tamara Adebayo", number: "070-881-1245" },
-            { id: nanoid(5), name: "Jane Doe", number: "080-772-1245" },
-            { id: nanoid(5), name: "Abdullahi Hauwa", number: "090-553-1245" }
-        ],
         name: "",
         number: "",
         filter: ""
@@ -40,23 +35,18 @@ class App extends Component {
     };
 
     filteredSearchContacts = () => {
-        const filteredContacts = [...this.state.contacts].filter((contact) =>
-            contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
-        );
-        return filteredContacts;
+        // const filteredContacts = [...this.state.contacts].filter((contact) =>
+        //    contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+        // );
+        // return filteredContacts;
     };
 
     deleteContactHandler = (key) => {
-        this.setState({
-            contacts: this.state.contacts.filter(
-                (contact) => contact.id !== key
-            )
-        });
-    };
-
-    addToLocalStorage = () => {
-        localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-        console.log("working", this.state.contacts);
+        //  this.setState({
+        //     contacts: this.state.contacts.filter(
+        //         (contact) => contact.id !== key
+        //     )
+        //  });
     };
 
     render() {
@@ -65,7 +55,7 @@ class App extends Component {
             AddStateInputToContact = (e) => {
                 e.preventDefault();
 
-                this.setState((prevState) => ({
+                /**  this.setState((prevState) => ({
                     contacts: [
                         ...prevState.contacts,
                         {
@@ -74,11 +64,9 @@ class App extends Component {
                             number: this.state.number
                         }
                     ]
-                }));
 
-                this.addToLocalStorage();
-                this.setState(() => ({ name: "", number: "" }));
-                e.target.closest("form").reset();
+                }));
+            **/
             };
         } else {
         }
@@ -94,10 +82,7 @@ class App extends Component {
                     <Filter Changed={this.searchInputHandler} />
                 </Section>
                 <Section title="Contacts">
-                    <Contacts
-                        contacts={this.filteredSearchContacts()}
-                        Clicked={this.deleteContactHandler}
-                    />
+                    <Contacts Clicked={this.deleteContactHandler} />
                 </Section>
             </>
         );
