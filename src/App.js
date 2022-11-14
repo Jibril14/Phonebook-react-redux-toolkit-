@@ -50,33 +50,10 @@ class App extends Component {
     };
 
     render() {
-        let AddStateInputToContact;
-        if (this.state.name || this.state.number !== "") {
-            AddStateInputToContact = (e) => {
-                e.preventDefault();
-
-                /**  this.setState((prevState) => ({
-                    contacts: [
-                        ...prevState.contacts,
-                        {
-                            id: nanoid(5),
-                            name: this.state.name,
-                            number: this.state.number
-                        }
-                    ]
-
-                }));
-            **/
-            };
-        } else {
-        }
         return (
             <>
                 <Section title="Phonebook">
-                    <Form
-                        Clicked={AddStateInputToContact}
-                        Changed={this.AddInputToState}
-                    />
+                    <Form />
                 </Section>
                 <Section title="Search Contacts">
                     <Filter Changed={this.searchInputHandler} />

@@ -1,13 +1,9 @@
 import styled from "styled-components";
 import propsType from "prop-types";
-import { propTypes } from "react-bootstrap/esm/Image";
-
 import { useSelector } from "react-redux";
 
 function Contacts(props) {
-    // test if redux state is connected
     const contacts = useSelector((state) => state.contact.value.contacts);
-
     console.log("PhoneName", contacts);
 
     return (
@@ -33,7 +29,7 @@ function Contacts(props) {
 export default Contacts;
 
 Contacts.propsType = {
-    Clicked: propTypes.func
+    Clicked: propsType.func
 };
 
 const Styleli = styled.li`
