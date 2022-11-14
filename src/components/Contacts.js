@@ -1,10 +1,15 @@
 import styled from "styled-components";
-import propsType from "prop-types";
-import { useSelector } from "react-redux";
+//import propsType from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteContact } from "../store/contactReducer";
 
-function Contacts(props) {
+function Contacts() {
     const contacts = useSelector((state) => state.contact.value.contacts);
-    console.log("PhoneName", contacts);
+    const dispatch = useDispatch();
+
+    const deleteHandler = (id) => {
+        dispatch(deleteContact(id));
+    };
 
     return (
         <ul>
@@ -16,7 +21,7 @@ function Contacts(props) {
                             style={{ color: "red", margin: "4px" }}
                         ></i>
                         {name}: ({number})
-                        <BtnDelete onClick={() => props.Clicked(id)}>
+                        <BtnDelete onClick={() => deleteHandler(id)}>
                             Delete
                         </BtnDelete>
                     </Styleli>
@@ -28,9 +33,9 @@ function Contacts(props) {
 
 export default Contacts;
 
-Contacts.propsType = {
-    Clicked: propsType.func
-};
+//Contacts.propsType = {
+//    Clicked: propsType.func
+//};
 
 const Styleli = styled.li`
     list-style-type: none;

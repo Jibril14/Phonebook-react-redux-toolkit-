@@ -18,6 +18,17 @@ export const phoneBookSlice = createSlice({
     reducers: {
         addContact: (state, action) => {
             state.value.contacts = state.value.contacts.concat(action.payload);
+        },
+
+        deleteContact: (state, action) => {
+            const newContact = [
+                ...state.value.contacts.filter(
+                    (contact) => contact.id !== action.payload
+                )
+            ];
+
+            state.value.contacts = newContact;
+            //console.log("delAction", action.payload);
         }
     }
 });
