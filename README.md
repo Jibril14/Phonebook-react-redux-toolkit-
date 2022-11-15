@@ -1,3 +1,18 @@
+# Phonebook (with redux toolkit)
+Application that store user contact details, support filtring, searching etc.
+
+## Project Summary
+
+This project uses Redux toolkit, a toolset for efficient Redux development.
+Demonstrate cases such as **store setup, creating reducers, immutable update logic, and more**. 
+
+## Setup
+
+-   `fork` and `clone` this repository.
+-   `cd` into the project root.
+-   Run `npm install` to install the project dependencies.
+-   Run `npm start` to fire up a development server.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
